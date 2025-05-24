@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-
 <head>
-    <title> Squaredle Solver </title>
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://code.jquery.com" crossorigin>
+<meta name="theme-color" content="#151515" />
+    <title>Squaredle Solver | Word Finder</title>
+      <meta name="description" content="Instantly solve any Squaredle puzzle with our Squaredle Solver. Find all possible words, get daily puzzle help, and boost your word game skills with ease.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="solver.js"></script>
-    <script src="driver.js"></script>
-    <script src="words3.js"></script>
 </head>
 
 <body>
-    <div style="width:380px; height:420px; margin:auto;">
+  <script>
+    if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js')
+    .then(registration => {console.log('Service Worker registered successfully:', registration);})
+    .catch(error => {console.log('Error in Service Worker registration:', error);});});}
+    </script>
+    <div style="width:90%; height:420px; margin:auto;">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h2 class="mr-sm-2"> Squaredle Solver </h2>
+            <h2 class="mr-sm-2">Squaredle Solver & Helper</h2>
             <button class="btn btn-outline-dark my-2 py-0 my-sm-0" data-toggle="modal" data-target="#exampleModal">
                 <h3>?</h3>
             </button>
@@ -48,21 +54,32 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        This is a solver for the popular word-finding game <a href="https://squaredle.app/">Squaredle</a>.
-                        <br>
-                        Please note that the results generated may not be an exact match with Squaredle's word list,
-                        but should cover almost all the required words.
+                      This is a solver for the popular word-finding game, <a href="https://squaredle.app/">Squaredle</a>.
 
-                        <br><br>
-                        This site is in no way affiliated with <a href="https://squaredle.app/">Squaredle</a>. 
-                        <hr>
-                        <b> IMPORTANT: </b> Use of this solver to artificially gain
-                        a perfect score in a short time and catapult to the top of the leaderboard is strongly discouraged,
-                        and can lead to your account being blocked from Squaredle's leaderboard.
-                        <hr>
-                        Got feedback, or see something you'd like to change? 
-                        Check out the <a href="https://github.com/minoli-g/squaredle-solver">GitHub repository</a>, and 
-                        feel free to submit an issue or put in a pull request.
+<br><br>
+
+Please note that the results generated may not exactly match Squaredle's official word list, but they should include nearly all the required answers.
+
+<br><br>
+
+This site is not affiliated with <a href="https://squaredle.app/" target="_blank" rel="noopener">Squaredle</a> in any way.
+
+<div class="block block-300"><script type="text/javascript">
+     atOptions = {
+       'key' : '0fee57062f9bb330edc13a4e4349876d',
+       'format' : 'iframe',
+       'height' : 250,
+       'width' : 300,
+       'params' : {}
+     };
+   </script>
+   <script type="text/javascript" src="//www.highperformanceformat.com/0fee57062f9bb330edc13a4e4349876d/invoke.js"></script></div>
+   
+       <hr>
+<b>IMPORTANT:</b> Using this solver to quickly achieve a perfect score and climb the leaderboard unfairly is strongly discouraged. Doing so may result in your account being blocked from Squaredle's leaderboard.
+
+<hr>
+Have feedback or suggestions? Visit the <a href="https://github.com/kaloodinaz/squaredle-solver" target="_blank" rel="noopener">GitHub repository</a> to report an issue or contribute via pull request.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
@@ -72,8 +89,10 @@
         </div>
     </div>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script defer src="solver.js"></script>
+    <script defer src="driver.js"></script>
+    <script defer src="words3.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
