@@ -1,98 +1,114 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preconnect" href="https://code.jquery.com" crossorigin>
-<meta name="theme-color" content="#151515" />
-    <title>Squaredle Solver | Word Finder</title>
-      <meta name="description" content="Instantly solve any Squaredle puzzle with our Squaredle Solver. Find all possible words, get daily puzzle help, and boost your word game skills with ease.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Instantly solve any Squaredle puzzle with our Squaredle Solver. Find all possible words, get daily puzzle help, and boost your word game skills with ease.">
+  <meta name="theme-color" content="#151515">
+  <title>Squaredle Solver | Word Finder</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding-top: 20px;
+    }
+    .container {
+      max-width: 600px;
+    }
+    .navbar h2 {
+      margin: 0;
+    }
+    .modal-body a {
+      word-break: break-word;
+    }
+  </style>
 </head>
-
 <body>
   <script>
-    if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js')
-    .then(registration => {console.log('Service Worker registered successfully:', registration);})
-    .catch(error => {console.log('Error in Service Worker registration:', error);});});}
-    </script>
-    <div style="width:90%; height:420px; margin:auto;">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <h2 class="mr-sm-2">Squaredle Solver & Helper</h2>
-            <button class="btn btn-outline-dark my-2 py-0 my-sm-0" data-toggle="modal" data-target="#exampleModal">
-                <h3>?</h3>
-            </button>
-        </nav>
+  <div class="container">
+    <nav class="navbar navbar-light bg-light mb-4 justify-content-between">
+      <h2>Squaredle Solver & Helper</h2>
+      <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal">
+        <span class="h4 m-0">?</span>
+      </button>
+    </nav>
 
-        <br>
-        <div class="px-3">
-            <p> Enter the puzzle board into the form below,
-                each row separated by a hyphen (ex: abc-def-ghi)
-            </p>
-            <p> If there are any missing or faded squares,
-                 add an @ symbol in their place (ex: ab@-def-g@i)</p>
-        </div>
-
-        <form  class="px-3">
-            <input type="text" class="form-control form-control-lg" id="boardStr" size="30"/>
-            <br>
-            <div class="text-center">
-                <button type="submit" class="btn btn-outline-dark mx-auto" id="submitBtn" onclick="onSubmit(); return false;">Solve!</button>
-            </div>
-        </form>
-        <br>
-        <p id="solutionList" style="word-wrap: break-word;" class="px-3"></p>
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">About Squaredle Solver</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                      This is a solver for the popular word-finding game, <a href="https://squaredle.app/">Squaredle</a>.
-
-<br><br>
-
-Please note that the results generated may not exactly match Squaredle's official word list, but they should include nearly all the required answers.
-
-<br><br>
-
-This site is not affiliated with <a href="https://squaredle.app/" target="_blank" rel="noopener">Squaredle</a> in any way.
-
-<div class="block block-300"><script type="text/javascript">
-     atOptions = {
-       'key' : '0fee57062f9bb330edc13a4e4349876d',
-       'format' : 'iframe',
-       'height' : 250,
-       'width' : 300,
-       'params' : {}
-     };
-   </script>
-   <script type="text/javascript" src="//www.highperformanceformat.com/0fee57062f9bb330edc13a4e4349876d/invoke.js"></script></div>
-   
-       <hr>
-<b>IMPORTANT:</b> Using this solver to quickly achieve a perfect score and climb the leaderboard unfairly is strongly discouraged. Doing so may result in your account being blocked from Squaredle's leaderboard.
-
-<hr>
-Have feedback or suggestions? Visit the <a href="https://github.com/kaloodinaz/squaredle-solver" target="_blank" rel="noopener">GitHub repository</a> to report an issue or contribute via pull request.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="mb-3">
+      <p>Enter the puzzle board below, separating each row with a hyphen (e.g., <code>abc-def-ghi</code>).</p>
+      <p>For missing or faded squares, use an <code>@</code> symbol (e.g., <code>ab@-def-g@i</code>).</p>
     </div>
 
-    <script defer src="solver.js"></script>
-    <script defer src="driver.js"></script>
-    <script defer src="words3.js"></script>
-    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <form onsubmit="onSubmit(); return false;">
+      <div class="form-group">
+        <input type="text" class="form-control form-control-lg" id="boardStr" placeholder="Enter board string">
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-dark">Solve!</button>
+      </div>
+    </form>
+
+    <hr>
+    <div id="solutionList" class="mt-4 text-break"></div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">About Squaredle Solver</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>This is a solver for the popular word-finding game, <a href="https://squaredle.app/" target="_blank" rel="noopener">Squaredle</a>.</p>
+            <p>Please note that the generated results may not exactly match Squaredle's official word list, but they should include nearly all the required answers.</p>
+            <p>This site is not affiliated with <a href="https://squaredle.app/" target="_blank" rel="noopener">Squaredle</a> in any way.</p>
+            <div class="my-3">
+              <script type="text/javascript">
+                atOptions = {
+                  'key': '0fee57062f9bb330edc13a4e4349876d',
+                  'format': 'iframe',
+                  'height': 250,
+                  'width': 300,
+                  'params': {}
+                };
+              </script>
+              <script type="text/javascript" src="//www.highperformanceformat.com/0fee57062f9bb330edc13a4e4349876d/invoke.js"></script>
+            </div>
+            <hr>
+            <p><strong>IMPORTANT:</strong> Using this solver to unfairly achieve a perfect score and top the leaderboard is strongly discouraged. Abuse may lead to account suspension from Squaredle's leaderboard.</p>
+            <hr>
+            <p>Got feedback or suggestions? Visit the <a href="https://github.com/kaloodinaz/squaredle-solver" target="_blank" rel="noopener">GitHub repository</a> to report an issue or contribute.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="solver.js"></script>
+  <script defer src="driver.js"></script>
+  <script defer src="words3.js"></script>
+  <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+</html>
