@@ -2,7 +2,7 @@
 A solver for the popular word-finding game Squaredle (https://squaredle.app).
 
 A mobile-friendly website with processing done entirely client-side.
-Available at https://minoli-g.github.io/squaredle-solver/ 
+Available at https://kaloodinaz.github.io/squaredle-solver/
 
 
 ## Logic
