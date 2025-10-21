@@ -1,5 +1,5 @@
 # squaredle-solver
-A solver for the popular word-finding game Squaredle (https://squaredle.app).
+A solver for the popular word-finding game Squaredle https://squaredle.pages.dev/
 
 A mobile-friendly website with processing done entirely client-side.
 Available at https://kaloodinaz.github.io/squaredle-solver/
